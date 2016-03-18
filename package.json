@@ -1,0 +1,19 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.3.3",
+    "humanize-plus": "^1.5.0",
+    "lodash": "^4.6.1",
+    "runescape-api": "^1.0.6",
+    "tmi": "^1.0.3",
+    "tmi.js": "0.0.27"
+  }
+}
