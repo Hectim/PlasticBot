@@ -13,7 +13,6 @@
     "humanize-plus": "^1.5.0",
     "lodash": "^4.6.1",
     "runescape-api": "^1.0.6",
-    "tmi": "^1.0.3",
     "tmi.js": "0.0.27"
   }
 }

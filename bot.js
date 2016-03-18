@@ -94,10 +94,6 @@ client.on('chat', function(channel, user, message, self){
         })
       })
       break;
-    case /!banme/.test(message):
-      client.say(channel, "Be careful what you wish for")
-      client.ban(channel, user.username);
-      break;
     case /!joke/.test(message):
       client.say(channel, randomJoke())
       break;
@@ -106,6 +102,9 @@ client.on('chat', function(channel, user, message, self){
       break;
     case /!commands/.test(message):
       client.say(channel, "Supported commands: !joke, !help, !skill <name>, !ge <name> or <id> (work in progress)")
+      break;
+    case /!who/.test(message):
+      client.say(channel, "I'm watching stats for: "+config.username)
       break;
   }
 })

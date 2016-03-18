@@ -14,8 +14,8 @@ var options = {
     reconnect: true
   },
   identity: {
-    username: account.username,
-    password: account.password
+    username: account.botUsername,
+    password: account.botPassword
   },
   channels: config.channels
 };
