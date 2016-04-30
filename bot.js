@@ -8,8 +8,8 @@ let jokes   = require('./jokes.js')
 let options = require('./config.js').options
 let rsapi   = require('runescape-api')
 
-let Promise   = require('bluebird')
 let Humanize  = require('humanize-plus')
+let Promise   = require('bluebird')
 
 let skillList = {
   overall:        ['overall', 'oa'],
@@ -66,9 +66,11 @@ let client = new irc.client(options);
 client.on('chat', function(channel, user, message, self){
   message = message.toLowerCase()
   switch(true){
+
     case /!commands/.test(message):
       client.say(channel, "Supported commands: !joke, !help, !skill <name>, !ge <name> or <id> (work in progress)")
       break;
+
     case /!ge ([0-9]* | [a-z\ ]*)*/.test(message):
       let thing = message.split(" ").slice(1).join("")
       let parsedInt = parseInt(thing, 10)
@@ -85,18 +87,15 @@ client.on('chat', function(channel, user, message, self){
         })
       })
       break;
+
     case /!help/.test(message):
       client.say(channel, "You're now breathing manually.   You're now blinking manually.   You're now aware of your tongue.")
       break;
+
     case /!joke/.test(message):
       client.say(channel, randomJoke())
       break;
-    //case /!poll [0-9a-z\ ]*/.test(message):
-    //  let args = _.map(message.slice(6).match(/\w+|"[^"]+"/g), function(arg){ return arg.replace(/\"/g, '')})
-    //  if(args.length == 1){
-    //    args.push('Yes.')
-    //    args.push('No.')
-    //  }
+
     case /!skill [a-z]*/.test(message):
       let skillName = findAlias(message.split(" ")[1])
       //check against list of skill names
@@ -111,6 +110,7 @@ client.on('chat', function(channel, user, message, self){
         })
       })
       break;
+
     case /!who/.test(message):
       client.say(channel, "I'm watching stats for: "+config.username)
       break;
