@@ -1,15 +1,16 @@
 'use strict';
 
-let _       = require('lodash')
-let config  = require('./config.js').config
-let ge      = require('./ge.js')
-let irc     = require('tmi.js')
-let jokes   = require('./jokes.js')
-let options = require('./config.js').options
-let rsapi   = require('runescape-api')
+let _          = require('lodash')
+let config     = require('./config.js').config
+let fatalities = require('./fatalities.js')
+let ge         = require('./ge.js')
+let irc        = require('tmi.js')
+let jokes      = require('./jokes.js')
+let options    = require('./config.js').options
+let rsapi      = require('runescape-api')
 
-let Humanize  = require('humanize-plus')
-let Promise   = require('bluebird')
+let Humanize   = require('humanize-plus')
+let Promise    = require('bluebird')
 
 let skillList = {
   overall:        ['overall', 'oa'],
@@ -45,6 +46,10 @@ function randomJoke(){
   return jokes[Math.floor(Math.random() * jokes.length-1)]
 }
 
+function randomDeath(){
+  return fatalities[Math.floor(Math.random() * jokes.length-1)]
+}
+
 function findAlias(string){
   let result = ""
   _.keys(skillList).map( (key) => {
@@ -68,7 +73,13 @@ client.on('chat', function(channel, user, message, self){
   switch(true){
 
     case /!commands/.test(message):
-      client.say(channel, "Supported commands: !joke, !help, !skill <name>, !ge <name> or <id> (work in progress)")
+      client.say(channel, "Supported commands: !help, !joke, !death, !skill <name>, !ge <name> or <id> (work in progress)")
+      break;
+
+    case /!dead/.test(message):
+    case /!death/.test(message):
+    case /!die/.test(message):
+      client.say(channel, randomDeath())
       break;
 
     case /!ge ([0-9]* | [a-z\ ]*)*/.test(message):
