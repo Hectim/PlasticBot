@@ -5,11 +5,11 @@ Twitch bot with ability to tell jokes and look up Runescape stats and ge prices.
 |Commands|Example|Description|
 |--------|-------|-----------|
 |!commands|!commands|shows available commands|
-|!joke|!joke|tells a random one-liner joke|
+|!joke|!joke|tells a random one-liner joke (can't promise it will be funny)|
 |!death|!death|spits out a random OSHA workplace fatality from '09 - '14|
 |!who|!who|displays the current user (defined in config.js)|
-|!skill name|!skill smith|looks up the Runescape stats for the username (config.js) and says the skill info|
-|!ge name/id|!ge raw rocktail|looks up the Runescape ge price of the item (broken for ids < ~13k)|
+|!skill name|!skill smith|displays the player's level, xp, and rank for a skill|
+|!ge name/id|!ge raw rocktail|displays ge price and daily change for item|
 
 # Installation
 ##### [npm](https://www.npmjs.com/) must be installed

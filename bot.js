@@ -63,7 +63,6 @@ function findAlias(string){
 function simplifyString(string){
   string = string.replace(/[\(\)\.\-\']/g, "")
   string = string.replace(/&/g, "and")
-  console.log('simplified string', string, ge[string])
   return string
 }
 
@@ -73,26 +72,23 @@ client.on('chat', function(channel, user, message, self){
   function getGeNumber (message) {
     let thing = message.split(" ").slice(1).join("")
     thing = thing.replace(/\+/g, 'plus')
-    console.log(thing)
     let parsedInt = parseInt(thing, 10)
     if(Number.isInteger(parsedInt)){
       thing = parsedInt
     } else {
       thing = ge[simplifyString(thing)]
     }
-    console.log('looking up data for game item', thing)
     return thing
   }
 
   message = message.toLowerCase()
   switch(true){
-    case new RegExp('/'+options.identity.username+'/').test(user.username):
+    case new RegExp(options.identity.username.toLowerCase()).test(user.username):
       // ignore everything the bot says
-      console.log('mydata', options)
       break;
 
     case /!commands/.test(message):
-      client.say(channel, "Supported commands: !help, !joke, !death, !skill <name>, !ge <name> or <id> (work in progress)")
+      client.say(channel, "Supported commands: !help, !joke, !death, !skill <name>, !ge <name> or <id>")
       break;
 
     case /!dead/.test(message):
@@ -102,13 +98,11 @@ client.on('chat', function(channel, user, message, self){
       break;
 
     case /!ge ([0-9]* | [a-z\ ]*)*/.test(message):
-      rsapi.rs.ge.itemInformation(getGeNumber(message).toString())
+      let check = getGeNumber(message)
+      rsapi.rs.ge.itemInformation(check)
       .then((result) => {
-        return result.item.name + " ---- " + result.item.current.price + " gp [" + result.item.today.price.split(" ").join("") + " gp]"
-      })
-      .then((string) => {
-        console.log('~~> string', string)
-        client.say(channel, string)
+        let response = result.item.name + " ---- " + result.item.current.price + " gp [" + result.item.today.price + " gp]"
+        client.say(channel, response)
       })
       break;
 
