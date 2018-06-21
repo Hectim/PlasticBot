@@ -1,7 +1,7 @@
 # PlasticBot
 Twitch bot with ability to tell jokes and look up Runescape stats and ge prices.
 
-#Features
+# Features
 |Commands|Example|Description|
 |--------|-------|-----------|
 |!commands|!commands|shows available commands|
