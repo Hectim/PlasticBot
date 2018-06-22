@@ -20,10 +20,12 @@ Twitch bot with ability to tell jokes and look up Runescape stats and ge prices.
 * Run "npm start" from the command line
 
 Twitch bots require Twitch accounts. Go to Twitch, make an account, and get the oauth key. Then create a file called account.js in the same directory as the other files. It should look like this (but with your own info):
+
 ```javascript
-var account = {
+module.exports = {
   username: "TwitchBotAccount",
   password: "oauth:4k3ij32lk23oij4lk52oij32"
 }
-module.exports = account
 ```
+
+note: I'd like to make a placeholder file for this but don't want it to overwrite mine... if you know how to do it make an issue

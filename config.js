@@ -1,8 +1,8 @@
 var account = require('./account.js')
 
 var config = {
-  username: "Plastic Cup",           // Runescape
-  channels: ["#PlasticCupRunescape"] // Twitch
+  username: "200m Smith", // Runescape
+  channels: ["#hectirn"]  // Twitch
 }
 
 var options = {
